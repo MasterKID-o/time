@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eastern Standard Time Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .time-container {
+            text-align: center;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .time-container h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #333;
+        }
+        .time-container p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+    <script>
+        function updateTime() {
+            const options = {
+                timeZone: 'America/New_York',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: true
+            };
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const timeString = formatter.format(new Date());
+
+            document.getElementById('time').textContent = timeString;
+        }
+
+        setInterval(updateTime, 1000);
+        window.onload = updateTime;
+    </script>
+</head>
+<body>
+    <div class="time-container">
+        <h1 id="time">Loading...</h1>
+        <p>Eastern Standard Time (EST)</p>
+    </div>
+</body>
+</html>
